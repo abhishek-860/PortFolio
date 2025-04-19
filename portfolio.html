@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhishek's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      color: #333;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: #1a1a2e;
+      color: #f1f1f1;
+    }
+
+    header {
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem;
+      background: #4e54c8;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    .toggle-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .dark-mode-btn {
+      background-color: #2196f3;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .dark-mode-btn:hover {
+      background-color: #1976d2;
+      transform: translateY(-2px);
+    }
+
+    .dark-mode-btn:focus {
+      outline: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #4e54c8;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    body.dark-mode h2 {
+      color: #f1f1f1;
+      border-color: #ffd700;
+    }
+
+    .project {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, background 0.3s, color 0.3s;
+    }
+
+    .dark-mode .project {
+      background: #2e2e3e;
+      color: #f1f1f1;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project h3 {
+      color: #4e54c8;
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .project h3 {
+      color: #ffd700;
+    }
+
+    .project .buttons {
+      margin-top: 1rem;
+    }
+
+    .project .buttons a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      background: #4e54c8;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .project .buttons a:hover {
+      background: #3136b8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .skills .skill {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .skills .skill i {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: #4e54c8;
+      transition: color 0.3s;
+    }
+
+    .dark-mode .skills .skill i {
+      color: #ffd700;
+    }
+
+    .skills .skill:hover i {
+      color: #3136b8;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #4e54c8;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3136b8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: #4e54c8;
+      color: #fff;
+      margin-top: 2rem;
+    }
+
+    a {
+      color: #4e54c8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .dark-mode a {
+      color: #ffd700;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Abhishek's Portfolio</h1>
+    <p>Web Developer | Java Programmer | DSA Enthusiast</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact-me">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- Updated Toggle Button -->
+  <div class="toggle-container">
+    <button class="dark-mode-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+  </div>
+
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Abhishek, a passionate developer who enjoys building efficient and scalable web and software applications. I have a keen interest in data structures and algorithms, and I specialize in HTML, CSS, JavaScript, and Java.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>Hotel Management System</h3>
+        <p>A comprehensive system developed in Java to manage hotel operations such as booking, check-in, and check-out.</p>
+        <div class="buttons">
+          <a href="https://github.com/abhishek-860/hotel-management-system" target="_blank">View Code</a>
+        </div>
+      </div>
+      <div class="project">
+        <h3>Hospital Management System with DSA in Java</h3>
+        <p>A Java-based project implementing data structures and algorithms to manage hospital records, appointments, and patient information.</p>
+        <div class="buttons">
+          <a href="https://github.com/abhishek-860/hospital-management-system" target="_blank">View Code</a>
+        </div>
+      </div>
+      <div class="project">
+        <h3>Basic JavaScript Project</h3>
+        <p>A beginner-level project showcasing the usage of fundamental JavaScript functionalities and DOM manipulation.</p>
+        <div class="buttons">
+          <a href="https://github.com/abhishek-860/basic-js-project" target="_blank">View Code</a>
+          <a href="https://abhishek-860.github.io/basic-js-project/" target="_blank">Live View</a>
+        </div>
+      </div>
+      <div class="project">
+        <h3>Myntra App Clone</h3>
+        <p>A frontend clone of the Myntra website designed using only HTML and CSS, focusing on layout and responsiveness.</p>
+        <div class="buttons">
+          <a href="https://github.com/abhishek-860/myntra-clone-project" target="_blank">View Code</a>
+          <a href="https://github.com/abhishek-860/myntra-clone-project" target="_blank">Live View</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill"><i class="fab fa-cuttlefish"></i><p>C</p></div>
+        <div class="skill"><i class="fab fa-cuttlefish"></i><p>C++</p></div>
+        <div class="skill"><i class="fab fa-java"></i><p>Java</p></div>
+        <div class="skill"><i class="fab fa-python"></i><p>Python</p></div>
+        <div class="skill"><i class="fab fa-js"></i><p>JavaScript</p></div>
+        <div class="skill"><i class="fas fa-database"></i><p>MySQL</p></div>
+        <div class="skill"><i class="fab fa-react"></i><p>React</p></div>
+        <div class="skill"><i class="fab fa-redux"></i><p>Redux</p></div>
+      </div>
+    </section>
+
+    <section id="contact-me">
+      <h2>Contact Me</h2>
+      <p>If you'd like to get in touch with me, feel free to reach out!</p>
+      <p>Email: <a href="mailto:abhisheksingh262cse@gmail.com">abhisheksingh262cse@gmail.com</a></p>
+      <p>Phone: <a href="tel:+918604005578">8604005578</a></p>
+      <p>GitHub: <a href="https://github.com/abhishek-860" target="_blank">github.com/abhishek-860</a></p>
+      <p>LeetCode: <a href="https://leetcode.com/abhisheksingh860" target="_blank">leetcode.com/abhisheksingh860</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/abhishek-singh-19860b299" target="_blank">linkedin.com/in/abhishek-singh-19860b299</a></p>
+    </section>
+  </div>
+
+  <footer>
+    <h3>Contact Me</h3>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
